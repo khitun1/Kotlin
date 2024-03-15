@@ -11,18 +11,19 @@ fun main() {
 
         var min = collection.elementAt(0)
         val max = collection.last()
-        var collectionForRemove: MutableCollection<Double> = mutableSetOf()
 
-        for (item in collection) {
-            if (item in min..max) {
-                min = item
+        var index = -1
+
+        while (++index < collection.size) {
+            if (collection.elementAt(index) in min..max) {
+                min = collection.elementAt(index)
             }
             else {
-                collectionForRemove.add(item)
+                collection.remove(collection.elementAt(index))
+                index--
             }
         }
 
-        collection.removeAll(collectionForRemove.toSet())
         println(collection)
 
     } catch (e: Exception) {
